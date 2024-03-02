@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background-color: #54adaa;
+  background-color: #5096ec;
   height: 100vh;
   margin: 0;
   padding: 0 30px;
@@ -23,7 +23,7 @@ body {
 
 * {
   font-family: 'Noto Sans Mono', monospace;
-  color: #d89292;
+  color: #d75353;
   font-weight: 300;
 }
 
