@@ -200,3 +200,9 @@ const currentYear = new Date().getFullYear();
 
 // Update the content of the currentYear span
 document.getElementById("currentYear").textContent = currentYear;
+// Example modification inside a function that flips the card
+function flipCard() {
+    let card = document.getElementById('current-card-id');
+    card.innerHTML = `<div>Question Number: ${card.dataset.questionNumber}</div>
+                      <div>Prompt: ${card.dataset.prompt}</div>`;
+}
