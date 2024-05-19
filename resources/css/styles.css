@@ -353,3 +353,9 @@ li.active-link div::before {
     margin-top: 45px;
   }
 }
+#question-number {
+    text-align: left;
+}
+#prompt {
+    color: grey;
+}
