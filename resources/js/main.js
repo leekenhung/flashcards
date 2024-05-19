@@ -74,11 +74,48 @@ function resetCurrent(index) {
   }
 }
 
+function increaseButtonCount(id) {
+  localStorage.setItem(id, parseInt(localStorage.getItem(id)) + 1 || 1);
+}
+
+function getCount(id) {
+  return window.localStorage.getItem(id) || 0;
+}
+
+let Buttonwrap = (id, element) => { return `<div id="${id}" class="buttonwrap">${element}</div>`; }
+let Counter = (classes, tracking_id) => { return `<span class="${classes}" trackid="${tracking_id}">${getCount(tracking_id)}</span>`; }
+
+// Build the card
+function buildCard(index) {
+  let prefix = 'b'+index;
+  let note = prompts[index];
+  let question_number = index + 1;
+  front.innerHTML = `
+  <h1 class='card_number'>Q.${question_number}</h1>
+  <div class='line'><p class='prompt'>${note.prompt}</p></div>
+  <div class='line'><audio controls><source src='resources/audio/${prefix}.mp3' type='audio/mpeg'></audio><br/></div>
+  <div class='line'><img src='resources/img/${prefix}.png'></img></div>`;
+  back.innerHTML = `
+  <p class='answer'>${note.answer}</p>
+  <p class='reference'><a href="${note.link}" target="_blank">reference</a></p>
+  <div class='line'>${Buttonwrap(prefix + '_good', '<span class="emoji_button">👌</span>')} ← <b>${Counter('counter_good', prefix + '_good')}</b></div>
+  <div class='line'>${Buttonwrap(prefix + '_bad', '<span class="emoji_button">😡</span>')} ← <b>${Counter('counter_bad', prefix + '_bad')}</b></div>
+  `;
+  count.innerHTML = `<p>${question_number} / ${prompts.length}</p>`;
+  buttonwraps = document.querySelectorAll(`[id^="${prefix}"]`);
+  buttonwraps.forEach((buttonwrap) => {
+    let id = buttonwrap.id;
+    buttonwrap.counters = document.querySelectorAll(`[trackid^="${id}"]`); 
+    buttonwrap.onclick = () => {
+      increaseButtonCount(id);
+      buttonwrap.counters.forEach((counter) => {counter.innerHTML = getCount(id)});
+    };
+  });
+}
+
 // Build the next card
 function buildNextCard() {
-  front.innerHTML = `<p>${prompts[current].prompt}</p>`;
-  back.innerHTML = `<p>${prompts[current].answer}</p><p><a href="${prompts[current].link}" target="_blank">reference</a></p>`;
-  count.innerHTML = `<p>${current + 1} / ${prompts.length}</p>`;
+  buildCard(current);
   current++;
 }
 
@@ -129,9 +166,7 @@ function getPrevCard() {
 
 // Build the previous card
 function buildPrevCard() {
-  front.innerHTML = `<p>${prompts[current - 2].prompt}</p>`;
-  back.innerHTML = `<p>${prompts[current - 2].answer}</p><p><a href="${prompts[current - 2].link}" target="_blank">reference</a></p>`;
-  count.innerHTML = `<p>${current - 1} / ${prompts.length}</p>`;
+  buildCard(current - 2);
   current--;
 }
 
@@ -140,7 +175,11 @@ function toggleFacing(e) {
   // Check if the clicked element is an anchor (link) within the back of the card
   if (e.target.tagName === 'A' && e.target.closest('.back')) {
     // Do nothing and let the link be followed
-  } else {
+  }
+  else if (!e.target.classList.contains("facing") && !e.target.classList.contains("line")) {
+    // If the click is not on the card itself, do nothing
+  }
+  else {
     // Toggle the card's facing side
     flipped = !flipped;
     if (flipped) {
