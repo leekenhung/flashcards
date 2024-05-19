@@ -1,6 +1,6 @@
 [
     {
-		"prompt": "What is the sound of the bird <span>1234</span>. Can you make the sound of the bird?.",
+		"prompt": "What is the sound of the bird ?. Can you make the sound of the bird?.",
 		"answer": "This is the answer.",
 		"link": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/10558/birds.mp3"
 	},
