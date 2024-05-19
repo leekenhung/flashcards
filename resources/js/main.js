@@ -94,7 +94,7 @@ function buildCard(index) {
   <h1 class='card_number'>Q.${question_number}</h1>
   <div class='line'><p class='prompt'>${note.prompt}</p></div>
   <div class='line'><audio controls><source src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/10558/birds.mp3' type='audio/mpeg'></audio><br/></div>
-  <div class='line'><img src='resources/img/${prefix}.png'></img></div>`;
+  <div class='line'><img src='resources/https://thumbs-prod.si-cdn.com/3n9RUFERlyCPoyPq4Vpg2MWmgw4=/fit-in/1600x0/https://public-media.si-cdn.com/filer/46/c7/46c7da28-e266-497b-9bc3-d25e291ee962/istock-1144653112.jpg'></img></div>`;
   back.innerHTML = `
   <p class='answer'>${note.answer}</p>
   <p class='reference'><a href="${note.link}" target="_blank">reference</a></p>
