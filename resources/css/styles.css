@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background-color: #5096ec;
+  background-color: #f9f9f9;
   height: 100vh;
   margin: 0;
   padding: 0 30px;
@@ -23,7 +23,7 @@ body {
 
 * {
   font-family: 'Noto Sans Mono', monospace;
-  color: #d75353;
+  color: #333333;
   font-weight: 300;
 }
 
@@ -91,6 +91,31 @@ footer p {
   max-width: 1200px;
 }
 
+h1.card_number {
+  font-size: 1.5rem;
+  text-align: right;
+  margin: 0;
+}
+
+p.prompt {
+  color: darkblue;
+}
+
+p.answer {
+  color: green;
+}
+
+span.emoji_button {
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+div.line {
+  display: flex;
+  text-align: left;
+  width: 90%;
+}
+
 /* Index Styles */
 ol {
   margin-block-end: 0;
@@ -151,7 +176,7 @@ li.active-link div::before {
 .facing {
   height: 100%;
   width: 100%;
-  border-radius: 50px;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
   backface-visibility: hidden;
@@ -163,7 +188,7 @@ li.active-link div::before {
 }
 
 .front {
-  display: flex;
+  display: block;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   color: #fefef2;
   transform: rotateX(0deg);
