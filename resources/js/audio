@@ -1,0 +1,11 @@
+your-project-directory/
+│
+├── audio/
+│   └── "https://s3-us-west-2.amazonaws.com/s.cdpn.io/10558/birds.mp3"
+│
+├── images/
+│   └── https://thumbs-prod.si-cdn.com/3n9RUFERlyCPoyPq4Vpg2MWmgw4=/fit-in/1600x0/https://public-media.si-cdn.com/filer/46/c7/46c7da28-e266-497b-9bc3-d25e291ee962/istock-1144653112.jpg"
+│
+├── index.html
+├── main.js
+└── style.css
